@@ -1,8 +1,16 @@
 const express = require('express')
+const colors = require('colors')
+const path = require('path');
 const dotenv = require('dotenv').config
 const {errorHandler} = require('./middleware/errorMiddleware')
-
+const connectDB = require('./config/db')
 const port = process.env.PORT || 5000
+
+// config dotenv path.
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+
+// connect to Mongo.
+connectDB()
 
 const app = express()
 
