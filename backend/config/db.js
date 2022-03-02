@@ -3,7 +3,7 @@ const dotenv = require('dotenv').config
 
 const connectDB = async () => {
     try {
-        console.log(`Logging MondoDb connection string: ${process.env.MONGO_URI}`)
+        // console.log(`Logging MondoDb connection string: ${process.env.MONGO_URI}`)
         const conn = await mongoose.connect(process.env.MONGO_URI)
         console.log(`MongoDB Connected on: ${conn.connection.host}`.cyan.underline)
     }

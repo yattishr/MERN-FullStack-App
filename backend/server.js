@@ -17,7 +17,11 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+//Goals route.
 app.use('/api/goals', require('./routes/goalRoutes') )
+
+// User route.
+app.use('/api/users', require('./routes/userRoutes') )
 
 // use custom error handler.
 app.use(errorHandler)
