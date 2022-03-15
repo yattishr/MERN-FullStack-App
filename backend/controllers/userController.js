@@ -9,6 +9,7 @@ const User = require('../model/userModel')
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password, cellphone, user_role } = req.body
+    console.log(`Name: ${name} | Email: ${email} | ${password}`)
     if(!name || !email || !password) {
         res.status(400)
         throw new Error('Some fields are missing. Please add all missing fields.')
@@ -73,7 +74,15 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route GET /api/users/me
 // @access Private
 const getMe = asyncHandler(async (req, res) => {
-    res.json({message: 'Fetch user data.'})
+    // res.json({message: 'Fetch user data.'})
+    const { _id, name, email } = await User.findById(req.user.id)
+    res.status(200).json({
+        id: _id,
+        name,
+        email
+    })
+
+
 })
 
 // Generate JWT
