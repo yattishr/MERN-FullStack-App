@@ -15,7 +15,8 @@ function Login() {
   }
 
   const onSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    console.log('Submit button clciked...');
   }
 
   return (

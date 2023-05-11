@@ -1,0 +1,25 @@
+to Login to the server;
+
+RUN npm run server
+NAVIGATE TO: http://localhost:5000/api/users/login
+
+LOGIN with: 
+email: yattish@gmail.com
+password: pass1234
+
+POST Goal:
+http://localhost:5000/api/goals/
+"text": "my first goal."
+
+
+GET Goal (will only retrieve Goals of currently logged in user) :
+http://localhost:5000/api/goals/
+
+Working functionality:
+1. Login with email & password
+2. Create a new user with email, password, name
+3. Create a new Goal
+4. Retrieve users Goals
+
+NB: When creating new goals, retrieving goals it is necessary to pass the Bearer token into the Authorization.
+This can be retrieved from the user once they have logged in.
