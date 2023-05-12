@@ -33,7 +33,7 @@ function Register() {
         navigate('/')
       }
 
-      // reset the State.
+      // reset the State. // call the Reset function from authSLice.
       dispatch(reset())
 
     }, [user, isError, isSuccess, message, navigate, dispatch])
@@ -56,6 +56,7 @@ function Register() {
         email,
         password,
       };
+      // call the Register function from authSLice.
       dispatch(register(userData));
     }
   };

@@ -22,11 +22,16 @@ export const register = createAsyncThunk('auth/register', async(user, thunkAPI) 
     }
 })
 
+// Logout user
+export const logout = createAsyncThunk('auth/logout', async(user, thunkAPI) => {
+    await authService.logout()
+})
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        reset: () => {
+        reset: (state) => {
             state.isLoading = false
             state.isError = false
             state.isSuccess = false
