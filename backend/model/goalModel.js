@@ -9,9 +9,11 @@ const goalSchema = mongoose.Schema({
     text: {
         type: String,
         required: [true, 'A text value is required. Please add some text.']
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
-}, {
-    timestamps: true
 })
 
 module.exports = mongoose.model('Goal', goalSchema)
