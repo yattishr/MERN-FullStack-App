@@ -26,17 +26,17 @@ function Dashboard() {
     }
 
     // Dispatch getGoals function.
-    dispatch(getGoals());
-
-    if (isLoading) {
-      return <Spinner />;
-    }
+    dispatch(getGoals());    
 
     // reset the state after fetching Goals.
     return () => {
       dispatch(reset);
     };
   }, [user, navigate, isError, message, dispatch]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
@@ -49,10 +49,10 @@ function Dashboard() {
       <section className="content">
         {goals.length > 0 ? (
           <div className="goals">
-            {goals.map((goal) => (
-              <GoalItem key={goal.id} goal={goal} />
-            ))}
-          </div>
+          {goals.map((goal) => (
+            <GoalItem key={goal._id} goal={goal} />
+          ))}
+        </div>
         ) : (
           <h3>You do not have any Goals </h3>
         )}

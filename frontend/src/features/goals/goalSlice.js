@@ -109,13 +109,22 @@ export const goalSlice = createSlice({
       .addCase(deleteGoal.pending, (state) => {
         state.isLoading = true;
       })
+      // .addCase(deleteGoal.fulfilled, (state, action) => {
+      //   state.isLoading = false;
+      //   state.isSuccess = true;
+      //   state.goals = state.goals.filter(
+      //     (goal) => goal._id !== action.payload.id
+      //   ); // filter out the deleted Goal so it doesn't show on the UI
+      // })
+
+      // updated deleteGoal.fulfilled. Y.R 2023-05-29
       .addCase(deleteGoal.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.goals = state.goals.filter(
-          (goal) => goal._id !== action.payload.id
-        ); // filter out the deleted Goal so it doesn't show on the UI
-      })
+        const deletedGoalId = action.meta.arg; // Access the goalId payload passed to the action
+        state.goals = state.goals.filter((goal) => goal._id !== deletedGoalId);
+      })      
+
       .addCase(deleteGoal.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;

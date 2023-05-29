@@ -30,11 +30,13 @@ const setGoal = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Please add some body text.')
     }
-    res.status(200).json({message: 'Setting Goals...'})
+    // res.status(200).json({message: 'Setting Goals...'})
     const goal = await Goal.create({
         text: req.body.text,
         user: req.user.id // store only logged in users goal.
     })
+
+    res.status(200).json(goal)
 }) 
 
 // @desc Update goals [By Id]
